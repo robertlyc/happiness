@@ -7,6 +7,9 @@
 //
 
 #define DEFAULT_SCALE 0.90
+#define EYE_H 0.35
+#define EYE_V 0.35
+#define EYE_RADIUS 0.10
 
 #import "FaceView.h"
 
@@ -50,7 +53,13 @@
     [self drawCircleAtPoint:midPoint withRadius:size inContext:context];
     //draw eyes
     
+    CGPoint eyePoint;
+    eyePoint.x = midPoint.x - size * EYE_H;
+    eyePoint.y = midPoint.y - size * EYE_V;
     
+    [self drawCircleAtPoint:eyePoint withRadius:size * EYE_RADIUS inContext:context];
+    eyePoint.x += size * EYE_H * 2;
+    [self drawCircleAtPoint:eyePoint withRadius:size * EYE_RADIUS inContext:context];
     
     //draw mouth
 }
